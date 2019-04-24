@@ -1,0 +1,30 @@
+cmake_minimum_required(VERSION 2.8.3)
+project(ekf_slam)
+
+
+find_package(catkin REQUIRED COMPONENTS roscpp visualization_msgs)
+
+
+
+catkin_package(
+#  INCLUDE_DIRS include
+#  LIBRARIES exf_slam
+#  CATKIN_DEPENDS other_catkin_pkg
+#  DEPENDS system_lib
+)
+
+###########
+## Build ##
+###########
+
+## Specify additional locations of header files
+## Your package locations should be listed before other locations
+include_directories(
+ include
+ ${catkin_INCLUDE_DIRS}
+)
+
+#add_executable(basic_shape basic_shape.cpp)
+add_executable(exfslam_sim src/exfslam_sim.cpp src/read_param.cpp src/update.cpp src/ros_plot.cpp) 
+target_link_libraries(exfslam_sim ${catkin_LIBRARIES})
+
